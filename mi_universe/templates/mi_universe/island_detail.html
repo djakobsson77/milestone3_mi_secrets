@@ -1,0 +1,12 @@
+{% load static %}
+
+<h1>{{ island.name }}</h1>
+<p>{{ island.description }}</p>
+
+{% if island.image_file %}
+    <a href="{% static 'mi_universe/images/' %}{{ island.image_file }}" target="_blank">
+        <img src="{% static 'mi_universe/images/' %}{{ island.image_file }}"
+             alt="{{ island.name }}"
+             style="width: 200px; height: auto; cursor: pointer;">
+    </a>
+{% endif %}

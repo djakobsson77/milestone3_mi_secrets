@@ -1,0 +1,11 @@
+<h1>Islands</h1>
+
+<ul>
+  {% for island in islands %}
+    <li>
+      <a href="{% url 'island_detail' island.pk %}">
+        {{ island.name }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>
