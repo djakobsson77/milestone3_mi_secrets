@@ -1,4 +1,8 @@
+{#  {% extends "base.html" %}  #}
+
 {% load static %}
+
+{% block content %}
 
 <h1>{{ island.name }}</h1>
 <p>{{ island.description }}</p>
@@ -10,3 +14,4 @@
              style="width: 200px; height: auto; cursor: pointer;">
     </a>
 {% endif %}
+{% endblock %}

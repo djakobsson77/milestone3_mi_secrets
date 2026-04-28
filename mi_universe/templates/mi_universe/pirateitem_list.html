@@ -1,0 +1,18 @@
+{#  {% extends "base.html" %}  #}
+
+{% load static %}
+
+{% block content %}
+<h1>Pirate Items</h1>
+
+<ul>
+    {% for item in items %}
+        <li>
+            <a href="{% url 'pirateitem_detail' item.pk %}">
+                {{ item.name }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

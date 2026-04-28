@@ -1,0 +1,29 @@
+{#  {% extends "base.html" %}  #}
+
+{% load static %}
+
+{% block content %}
+
+<h1>{{ character.name }}</h1>
+
+<p>{{ character.description|linebreaksbr }}</p>
+
+{% if images %}
+    {% for img in images %}
+        <a href="{% static 'mi_universe/images/' %}{{ img }}" target="_blank">
+            <img src="{% static 'mi_universe/images/' %}{{ img }}"
+                 alt="{{ character.name }}"
+                 style="width: 200px; height: auto; margin-right: 10px;">
+        </a>
+    {% endfor %}
+{% endif %}
+
+<p>
+    Appears on:
+    <a href="{% url 'island_detail' character.island.pk %}">
+        {{ character.island.name }}
+    </a>
+</p>
+
+<p><a href="{% url 'character_list' %}">Back to characters</a></p>
+{% endblock %}
