@@ -3,30 +3,42 @@
 
 {% block content %}
 
-<h2 class="mb-4">Welcome to the Monkey Island Universe</h2>
-
-<p>Explore characters, islands and legendary pirate items from the Monkey Island world.</p>
-
-<div class="row mt-4">
-
-    <div class="col-md-4 mb-3">
-        <a href="{% url 'character_list' %}" class="btn btn-warning w-100 py-3">
-            Characters
-        </a>
-    </div>
-
-    <div class="col-md-4 mb-3">
-        <a href="{% url 'island_list' %}" class="btn btn-warning w-100 py-3">
-            Islands
-        </a>
-    </div>
-
-    <div class="col-md-4 mb-3">
-        <a href="{% url 'pirateitem_list' %}" class="btn btn-warning w-100 py-3">
-            Pirate Items
-        </a>
-    </div>
-
-</div>
+    <section class="container">
+        <div class="row">
+            <div class="col-12 text-center my-1">
+                <h3 class="display-5">Welcome to the Monkey Island Universe</h3>
+                <img src="{% static 'mi_universe/images/mi1_se.png' %}" alt="Monkey Island title screen" width="1000" height="auto"
+                        class="img-fluid rounded shadow">   
+            </div>
+            <div class="col-12 text-center mb-4">
+                <h4>What is the secret of Monkey Island?</h4>
+            </div>
+            <div class="col-12 col-md-6 mb-5 d-flex justify-content-center">
+                <img src="{% static 'mi_universe/images/guybrush_log.png' %}" alt="Shipwrecked Guybrush writing captains log" width="300" height="auto" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-12 col-md-6 mb-4">
+                <p>Do you really think that I would reveal the secret right away? No, but ask yourself... 
+                    is there really a secret about Monkey Island? And, is it really already revealed?<br>
+                    I have myself played all the games and explored every corner of this island and other
+                    islands as well, and the answer is still very unclear.<br>
+                    But I won't say more than that about it because it would be a spoiler and it would 
+                    ruin the whole experience.</p>
+                    <p>
+                    I invite you to explore the islands and discover the secrets for yourself and this
+                    website will help you a little to get to know the games better. Here you can read about
+                    the different islands throughout the games and you can get to know some of the characters
+                    and what items every pirate should have.</p>
+                    <p>
+                    If you are really dedicated, sign up to become a member and some extra features will be 
+                    available to you.<br>
+                    So feel free to explore this site and enjoy what it has to offer!<br>
+                </p>
+                <div class="col-12 text-center my-5">
+                    <img src="{% static 'mi_universe/images/swordfight.png' %}" alt="Guybrush and Rottingham in a sword fight" width="500" height="auto"
+                        class="img-fluid rounded shadow"> 
+                </div>
+            </div>
+        </div>
+    </section>
 
 {% endblock %}

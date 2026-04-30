@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
+
 /* Global layout and colors */
 body {
     background-color: #000;
     color: #ffc107;
-    font-family: Arial, sans-serif;
+    font-family: 'Pirata One';
 }
 
 a {
