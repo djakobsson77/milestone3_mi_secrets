@@ -1,0 +1,107 @@
+/* Global layout and colors */
+body {
+    background-color: #000;
+    color: #ffc107;
+    font-family: Arial, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* Navbar (compact, dark blue) */
+.mi-navbar {
+    background-color: #001f3f;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+}
+
+.mi-navbar .navbar-brand {
+    font-size: 1.1rem;
+    padding: 0;
+    margin: 0;
+}
+
+.mi-navbar .nav-link {
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    font-size: 0.95rem;
+    color: #ffc107 !important;
+}
+
+.mi-navbar .nav-link:hover {
+    color: #fff !important;
+}
+
+
+/* Home page buttons */
+.btn-mi {
+    background-color: #ffc107;
+    color: #000;
+    font-weight: bold;
+    padding: 1rem;
+    border-radius: 6px;
+    width: 100%;
+    display: block;
+    transition: 0.2s;
+}
+
+.btn-mi:hover {
+    background-color: #e0a800;
+    color: #000;
+}
+
+
+/* Footer (compact, dark blue) */
+.mi-footer {
+    background-color: #001f3f;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+
+/* Contact form (compact and clean) */
+.mi-contact-form input,
+.mi-contact-form textarea {
+    width: 100%;
+    background-color: #0a0a0a;
+    border: 1px solid #ffc107;
+    color: #ffc107;
+    padding: 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.mi-contact-form textarea {
+    height: 60px;
+    resize: none;
+}
+
+.mi-contact-form button {
+    background-color: #ffc107;
+    color: #000;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+
+.mi-contact-form button:hover {
+    background-color: #3f2f00;
+}
+
+
+/* Optional card styling for list pages */
+.card-mi {
+    background-color: #111;
+    border: 1px solid #ffc107;
+    color: #ffc107;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}

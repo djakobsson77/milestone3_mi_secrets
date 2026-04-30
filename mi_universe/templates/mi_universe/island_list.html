@@ -5,14 +5,30 @@
 {% block content %}
 <h1>Islands</h1>
 
+{% for group in grouped %}
+    <h2>{{ group.game }}</h2>
 
-<ul>
-  {% for island in islands %}
-    <li>
-      <a href="{% url 'island_detail' island.pk %}">
-        {{ island.name }}
-      </a>
-    </li>
-  {% endfor %}
-</ul>
+    <ul>
+        {% for entry in group.islands %}
+            <li>
+                <a href="{% url 'island_detail' entry.island.id %}">
+                    {{ entry.island.name }}
+                </a>
+
+                {% if entry.sub_islands %}
+                    <ul>
+                        {% for sub in entry.sub_islands %}
+                            <li>
+                                <a href="{% url 'island_detail' sub.id %}">
+                                    {{ sub.name }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endfor %}
 {% endblock %}

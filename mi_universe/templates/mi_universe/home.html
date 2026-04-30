@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h2 class="mb-4">Welcome to the Monkey Island Universe</h2>
+
+<p>Explore characters, islands and legendary pirate items from the Monkey Island world.</p>
+
+<div class="row mt-4">
+
+    <div class="col-md-4 mb-3">
+        <a href="{% url 'character_list' %}" class="btn btn-warning w-100 py-3">
+            Characters
+        </a>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <a href="{% url 'island_list' %}" class="btn btn-warning w-100 py-3">
+            Islands
+        </a>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <a href="{% url 'pirateitem_list' %}" class="btn btn-warning w-100 py-3">
+            Pirate Items
+        </a>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -8,18 +8,17 @@
 
 <p>{{ character.description|linebreaksbr }}</p>
 
+
 {% if images %}
     {% for img in images %}
-        <a href="{% static 'mi_universe/images/' %}{{ img }}" target="_blank">
-            <img src="{% static 'mi_universe/images/' %}{{ img }}"
-                 alt="{{ character.name }}"
-                 style="width: 200px; height: auto; margin-right: 10px;">
-        </a>
+        <img src="{% static 'mi_universe/images/' %}{{ img }}"
+             alt="{{ character.name }}"
+             style="width: 150px; height: auto; margin-right: 10px;">
     {% endfor %}
 {% endif %}
 
 <p>
-    Appears on:
+    Appears first time on:
     <a href="{% url 'island_detail' character.island.pk %}">
         {{ character.island.name }}
     </a>
