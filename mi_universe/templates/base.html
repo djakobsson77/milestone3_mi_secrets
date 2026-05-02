@@ -22,8 +22,8 @@
     <nav id="navbar" class="navbar navbar-expand-sm mi-navbar">
         <div class="container">
 
-            <div class="navbar-brand text-warning">
-                Monkey Island
+            <div class="navbar-brand text-mi-yellow">
+                Monkey Island Universe
             </div>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -36,21 +36,25 @@
                 <ul class="navbar-nav ms-auto">
 
                     <li class="nav-item">
-                        <a class="nav-link text-warning" href="{% url 'home' %}">Home</a>
+                        <a class="nav-link text-mi-yellow" href="{% url 'home' %}">Home</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link text-warning" href="{% url 'character_list' %}">Characters</a>
+                        <a class="nav-link text-mi-yellow" href="{% url 'character_list' %}">Characters</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link text-warning" href="{% url 'island_list' %}">Islands</a>
+                        <a class="nav-link text-mi-yellow" href="{% url 'island_list' %}">Islands</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link text-warning" href="{% url 'pirateitem_list' %}">Pirate Items</a>
+                        <a class="nav-link text-mi-yellow" href="{% url 'pirateitem_list' %}">Pirate Items</a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link text-mi-yellow" href="{% url 'about' %}">About</a>
+                    </li>
+                    
                 </ul>
             </div>
 
@@ -59,6 +63,16 @@
 </header>
 
 <main class="flex-grow-1">
+    {% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+            <div class="alert alert-success text-center">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
     {% block content %}
     {% endblock %}
 </main>
@@ -66,9 +80,9 @@
 <footer class="mi-footer mt-auto">
     <div class="container text-center py-3">
 
-        <h5 class="text-warning mb-2">Contact me</h5>
+        <h5 class="text-mi-yellow mb-2">Contact me</h5>
 
-        <form class="mi-contact-form" method="POST" action="#">
+        <form class="mi-contact-form" method="POST" action="{% url 'contact' %}">
             {% csrf_token %}
             <div class="row g-2 justify-content-center">
 
@@ -91,7 +105,7 @@
             </div>
         </form>
 
-        <p class="text-warning mt-3 mb-0">Daniel Jacobsson - Monkey Island Universe © 2026</p>
+        <p class="text-mi-yellow mt-3 mb-0">Daniel Jacobsson - Monkey Island Universe © 2026</p>
     </div>
 </footer>
 

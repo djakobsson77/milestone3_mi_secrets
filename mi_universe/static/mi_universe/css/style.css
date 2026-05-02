@@ -4,8 +4,17 @@
 body {
     background-color: #000;
     color: #ffc107;
-    font-family: 'Pirata One';
+    font-family: 'Pirata One', serif;
 }
+
+h1, h2, h3, h4, h5, h6 {
+    color: #ffc107;
+}
+
+.text-mi-yellow {
+    color: #ffc107 !important;
+}
+
 
 a {
     text-decoration: none;
@@ -15,8 +24,8 @@ a {
 /* Navbar (compact, dark blue) */
 .mi-navbar {
     background-color: #001f3f;
-    padding-top: 0.2rem;
-    padding-bottom: 0.2rem;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .mi-navbar .navbar-brand {
@@ -36,32 +45,12 @@ a {
     color: #fff !important;
 }
 
-
-/* Home page buttons */
-.btn-mi {
-    background-color: #ffc107;
-    color: #000;
-    font-weight: bold;
-    padding: 1rem;
-    border-radius: 6px;
-    width: 100%;
-    display: block;
-    transition: 0.2s;
-}
-
-.btn-mi:hover {
-    background-color: #e0a800;
-    color: #000;
-}
-
-
 /* Footer (compact, dark blue) */
 .mi-footer {
     background-color: #001f3f;
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
-
 
 /* Contact form (compact and clean) */
 .mi-contact-form input,
@@ -98,7 +87,7 @@ a {
 }
 
 
-/* Optional card styling for list pages */
+/* List pages */
 .card-mi {
     background-color: #111;
     border: 1px solid #ffc107;
@@ -106,4 +95,23 @@ a {
     padding: 1rem;
     border-radius: 6px;
     margin-bottom: 1rem;
+}
+
+.character-fixed-height {
+    min-height: 700px;
+}
+
+.island-fixed-height {
+    min-height: 500px;
+}
+
+.item-fixed-height {
+    min-height: 400px;
+}
+
+/* About page */
+.mi-text-700 {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
 }

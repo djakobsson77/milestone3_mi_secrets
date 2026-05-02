@@ -1,22 +1,25 @@
-{#  {% extends "base.html" %}  #}
-
+{% extends "base.html" %}
 {% load static %}
 
 {% block content %}
-<h1>Characters</h1>
 
-<ul>
-  {% for character in characters %}
-    <li>
-      <a href="{% url 'character_detail' character.pk %}">
+<section class="container my-4">
+  <h1>Characters</h1>
+
+  <ul>
+    {% for character in characters %}
+      <li>
+        <a href="{% url 'character_detail' character.pk %}">
         {{ character.name }}
-      </a>
-      {% if character.island %}
-        – from {{ character.island.name }}
-      {% endif %}
-    </li>
-  {% empty %}
-    <li>No characters added yet.</li>
-  {% endfor %}
-</ul>
+        </a>
+        {% if character.island %}
+          – from {{ character.island.name }}
+        {% endif %}
+      </li>
+    {% empty %}
+      <li>No characters added yet.</li>
+    {% endfor %}
+  </ul>
+</section>
+
 {% endblock %}

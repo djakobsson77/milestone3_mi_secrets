@@ -1,28 +1,34 @@
-{#  {% extends "base.html" %}  #}
+{% extends "base.html" %}
 
 {% load static %}
 
 {% block content %}
 
-<h1>{{ character.name }}</h1>
+<section class="container character-fixed-height">
+    <div class="row">
+        <div class="col-12 text-center mt-5 mi-text-700">
+            <h1>{{ character.name }}</h1>
+            <p>{{ character.description|linebreaksbr }}</p>
+        
 
-<p>{{ character.description|linebreaksbr }}</p>
+                {% if images %}
+                    {% for img in images %}
+                        <img src="{% static 'mi_universe/images/' %}{{ img }}"
+                        alt="{{ character.name }}"
+                        style="width: 150px; height: auto; margin-right: 10px;">
+                    {% endfor %}
+                {% endif %}
 
+            <p>
+            Appears first time on:
+            <a href="{% url 'island_detail' character.island.pk %}">
+            {{ character.island.name }}
+            </a>
+            </p>
 
-{% if images %}
-    {% for img in images %}
-        <img src="{% static 'mi_universe/images/' %}{{ img }}"
-             alt="{{ character.name }}"
-             style="width: 150px; height: auto; margin-right: 10px;">
-    {% endfor %}
-{% endif %}
+            <p><a href="{% url 'character_list' %}">Back to Characters</a></p>
+        </div>
+    </div>
+</section>
 
-<p>
-    Appears first time on:
-    <a href="{% url 'island_detail' character.island.pk %}">
-        {{ character.island.name }}
-    </a>
-</p>
-
-<p><a href="{% url 'character_list' %}">Back to characters</a></p>
 {% endblock %}

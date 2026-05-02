@@ -1,34 +1,37 @@
-{#  {% extends "base.html" %}  #}
-
+{% extends "base.html" %}
 {% load static %}
 
 {% block content %}
-<h1>Islands</h1>
 
-{% for group in grouped %}
-    <h2>{{ group.game }}</h2>
+<section class="container my-4">
+    <h1>Islands</h1>
 
-    <ul>
-        {% for entry in group.islands %}
-            <li>
-                <a href="{% url 'island_detail' entry.island.id %}">
-                    {{ entry.island.name }}
-                </a>
+    {% for group in grouped %}
+        <h5>{{ group.game }}</h5>
 
-                {% if entry.sub_islands %}
-                    <ul>
-                        {% for sub in entry.sub_islands %}
-                            <li>
-                                <a href="{% url 'island_detail' sub.id %}">
-                                    {{ sub.name }}
-                                </a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
+        <ul>
+            {% for entry in group.islands %}
+                <li>
+                    <a href="{% url 'island_detail' entry.island.id %}">
+                        {{ entry.island.name }}
+                    </a>
 
-{% endfor %}
+                    {% if entry.sub_islands %}
+                        <ul>
+                            {% for sub in entry.sub_islands %}
+                                <li>
+                                    <a href="{% url 'island_detail' sub.id %}">
+                                        {{ sub.name }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+
+    {% endfor %}
+</section>
+
 {% endblock %}

@@ -1,20 +1,24 @@
-{#  {% extends "base.html" %}  #}
+{% extends "base.html" %}
 
 {% load static %}
 
 {% block content %}
-<h1>{{ item.name }}</h1>
+<section class="container item-fixed-height">
+    <div class="row">
+        <div class="col-12 text-center mt-5 mi-text-700">
+            <h1>{{ item.name }}</h1>
 
-<p>{{ item.description|linebreaksbr }}</p>
+            <p>{{ item.description|linebreaksbr }}</p>
 
-{% if item.image_file %}
-    <img src="{% static 'mi_universe/images/' %}{{ item.image_file }}" 
-         alt="{{ item.name }}" 
-         style="max-width: 400px; height: auto;">
-{% endif %}
+            {% if item.image_file %}
+                <img src="{% static 'mi_universe/images/' %}{{ item.image_file }}" 
+                    alt="{{ item.name }}" 
+                    style="max-width: 400px; height: auto;">
+            {% endif %}
 
-<p>
-    <a href="{% url 'pirateitem_list' %}">Back to Pirate Items</a>
-</p>
+            <p><a href="{% url 'pirateitem_list' %}">Back to Pirate Items</a></p>
+        </div>
+    </div>
+</section>
 
 {% endblock %}

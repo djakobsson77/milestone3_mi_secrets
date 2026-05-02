@@ -9,4 +9,6 @@ urlpatterns = [
     path("characters/<int:pk>/", views.character_detail, name="character_detail"),
     path("pirateitems/", views.pirateitem_list, name="pirateitem_list"),
     path("pirateitems/<int:pk>/", views.pirateitem_detail, name="pirateitem_detail"),
+    path("about/", views.about, name="about"),
+    path("contact/", views.contact, name="contact"),
 ]
