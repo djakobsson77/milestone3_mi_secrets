@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mi_universe',
+    'shop.apps.ShopConfig',
 ]
 
 MIDDLEWARE = [

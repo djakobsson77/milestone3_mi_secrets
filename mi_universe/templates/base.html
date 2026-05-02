@@ -18,42 +18,48 @@
 <body class="d-flex flex-column min-vh-100">
 
     <header>
-        <nav id="navbar" class="navbar navbar-expand-sm mi-navbar">
+        <nav id="navbar" class="navbar navbar-expand-md mi-navbar">
             <div class="container">
 
-                <div class="navbar-brand text-mi-yellow">
-                    Monkey Island Universe
+                <div class="navbar-brand text-warning">
+                    Monkey Island
                 </div>
 
+                <!-- Burger-knapp -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                <!-- Menyn som kollapsar -->
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link text-mi-yellow" href="{% url 'home' %}">Home</a>
+                            <a class="nav-link text-warning" href="{% url 'home' %}">Home</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-mi-yellow" href="{% url 'character_list' %}">Characters</a>
+                            <a class="nav-link text-warning" href="{% url 'character_list' %}">Characters</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-mi-yellow" href="{% url 'island_list' %}">Islands</a>
+                            <a class="nav-link text-warning" href="{% url 'island_list' %}">Islands</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-mi-yellow" href="{% url 'pirateitem_list' %}">Pirate Items</a>
+                            <a class="nav-link text-warning" href="{% url 'pirateitem_list' %}">Pirate Items</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-mi-yellow" href="{% url 'about' %}">About</a>
+                            <a class="nav-link text-warning" href="{% url 'about' %}">About</a>
                         </li>
 
                         {% if user.is_authenticated %}
+                        <li class="nav-item ms-3">
+                            <a class="nav-link text-warning" href="{% url 'shop' %}">Shop</a>
+                        </li>
+
                         <li class="nav-item d-flex align-items-center ms-3">
                             <form method="POST" action="{% url 'logout' %}" class="m-0 p-0">
                                 {% csrf_token %}
@@ -64,17 +70,16 @@
                             </form>
                         </li>
                         {% else %}
-                        <li class="nav-item">
+                        <li class="nav-item ms-3">
                             <a class="nav-link text-warning" href="{% url 'login' %}">Login</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item ms-3">
                             <a class="nav-link text-warning" href="{% url 'signup' %}">Sign up</a>
                         </li>
                         {% endif %}
 
                     </ul>
                 </div>
-
             </div>
         </nav>
     </header>
