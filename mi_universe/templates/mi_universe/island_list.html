@@ -5,6 +5,19 @@
 
 <section class="container my-4">
     <h1>Islands</h1>
+        <p>In the game, Guybrush will visit many islands. 
+            The islands are listed here based on the game they appear in. You
+            can click on the island name to see more details about it.
+        </p>
+    
+        {% regroup islands by game as grouped %}
+    
+        {% comment %}
+        The regroup template tag is used to group the islands by their game.
+        It creates a new variable called "grouped" that contains a list of
+        groups. Each group has a "game" attribute and an "islands" attribute
+        that contains the list of islands in that group.
+        {% endcomment %}
 
     {% for group in grouped %}
         <h5>{{ group.game }}</h5>
