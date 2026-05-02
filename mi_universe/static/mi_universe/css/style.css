@@ -45,6 +45,16 @@ a {
     color: #fff !important;
 }
 
+.navbar .nav-item form {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar .nav-item .nav-link {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
 /* Footer (compact, dark blue) */
 .mi-footer {
     background-color: #001f3f;

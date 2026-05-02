@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Island, Character, PirateItem
 from django.core.mail import send_mail
 from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
 
 def island_list(request):
     islands = Island.objects.all().order_by("name")
@@ -137,3 +138,15 @@ def contact(request):
         return redirect(request.META.get("HTTP_REFERER", "home"))
 
     return redirect("home")
+
+
+def signup(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("login")
+    else:
+        form = UserCreationForm()
+
+    return render(request, "mi_universe/signup.html", {"form": form})
