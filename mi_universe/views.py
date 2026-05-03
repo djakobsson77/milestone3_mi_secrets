@@ -7,6 +7,10 @@ from django.contrib.auth.forms import UserCreationForm
 def island_list(request):
     islands = Island.objects.all().order_by("name")
 
+    def get_island(name):
+        return next((i for i in islands if i.name == name), None)
+
+
     categories = {
         "The Secret of Monkey Island": [
             {"name": "Mêlée Island"}, 
@@ -47,32 +51,36 @@ def island_list(request):
         ]
     }
 
-    grouped = []
+    grouped_islands = []
 
     for game_title, island_entries in categories.items():
-        game_group = {"game": game_title, "islands": []}
+        game_islands = []
 
         for entry in island_entries:
-            island_obj = next((i for i in islands if i.name == entry["name"]), None)
-
+            island_obj = get_island(entry["name"])
             if not island_obj:
                 continue
 
+            # Add sub-islands if present
             if "sub_islands" in entry:
-                subs = [i for i in islands if i.name in entry["sub_islands"]]
-                game_group["islands"].append({
-                    "island": island_obj,
-                    "sub_islands": subs
-                })
+                island_obj.sub_islands = [
+                    get_island(sub_name)
+                    for sub_name in entry["sub_islands"]
+                    if get_island(sub_name)
+                ]
             else:
-                game_group["islands"].append({
-                    "island": island_obj,
-                    "sub_islands": []
-                })
+                island_obj.sub_islands = []
 
-        grouped.append(game_group)
-    return render(request, "mi_universe/island_list.html", {"grouped": grouped})
+            game_islands.append(island_obj)
 
+        grouped_islands.append({
+            "game": game_title,
+            "islands": game_islands
+        })
+
+    return render(request, "mi_universe/island_list.html", {
+        "grouped_islands": grouped_islands
+    })
 
 
 def island_detail(request, pk):

@@ -87,9 +87,9 @@ a {
     resize: none;
 }
 
-.mi-contact-form button {
-    background-color: #ffc107;
-    color: #000;
+.mi-contact-form-button {
+    background-color: #c9a227 !important;
+    color: #d3d3d3;
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 4px;
@@ -100,10 +100,17 @@ a {
     transition: 0.2s;
 }
 
-.mi-contact-form button:hover {
-    background-color: #e0a800;
+.mi-contact-form-button:hover {
+    background-color: #ffc107 !important;
+    color:#000
 }
 
+/* Home page */
+.home-hero-img {
+    width: 300px;        /* samma visuella storlek som innan */
+    height: auto;        /* korrekt proportion */
+    object-fit: contain; /* förhindrar stretching */
+}
 
 /* List pages */
 .card-mi {
@@ -113,6 +120,18 @@ a {
     padding: 1rem;
     border-radius: 6px;
     margin-bottom: 1rem;
+}
+
+.mi-list li a {
+    display: inline;
+    padding: 0.2rem 0;
+    color: #3d07ff;
+    transition: 0.15s ease-in-out;
+}
+
+.mi-list li a:hover {
+    color: #fff;
+    padding-left: 4px;
 }
 
 .character-fixed-height {
@@ -189,7 +208,7 @@ a {
 }
 
 /* Add to Cart button */
-.game-card .btn {
+.game-card a.btn {
     margin-top: auto;
     background-color: #c9a227;
     color: #d3d3d3;
@@ -202,7 +221,7 @@ a {
     margin-bottom: 8px;
 }
 
-.game-card .btn:hover {
+.game-card a.btn:hover {
     background-color: #ffc107;
     color: #000 !important;
     transform: translateY(-2px);
@@ -221,7 +240,10 @@ a {
     background-color: #c9a227;
     color: #d3d3d3;
     padding: 12px 0px;
-    width: 100%;
+    max-width: 100px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
     border-radius: 4px;
     font-weight: bold;
@@ -232,7 +254,7 @@ a {
 .view-cart-btn:hover {
     background-color: #ffc107;
     transform: translateY(-2px);
-    color: #000;
+    color: #000 !important;
 }
 
 
@@ -247,7 +269,6 @@ a {
 }
 
 /* Checkout + Continue buttons */
-
 .cart-btns {
     background-color: #c9a227;
     color: #d3d3d3;

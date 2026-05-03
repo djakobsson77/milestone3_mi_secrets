@@ -10,7 +10,7 @@
     click on the character name to see more details about them.
   </p>
 
-  <ul>
+  <ul class="mi-list">
     {% for character in characters %}
       <li>
         <a href="{% url 'character_detail' character.pk %}">

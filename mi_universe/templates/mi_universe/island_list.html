@@ -5,33 +5,25 @@
 
 <section class="container my-4">
     <h1>Islands</h1>
-        <p>In the game, Guybrush will visit many islands. 
-            The islands are listed here based on the game they appear in. You
-            can click on the island name to see more details about it.
-        </p>
-    
-        {% regroup islands by game as grouped %}
-    
-        {% comment %}
-        The regroup template tag is used to group the islands by their game.
-        It creates a new variable called "grouped" that contains a list of
-        groups. Each group has a "game" attribute and an "islands" attribute
-        that contains the list of islands in that group.
-        {% endcomment %}
+    <p>
+        In the game, Guybrush will visit many islands. 
+        The islands are listed here based on the game they appear in. You
+        can click on the island name to see more details about it.
+    </p>
 
-    {% for group in grouped %}
+    {% for group in grouped_islands %}
         <h5>{{ group.game }}</h5>
 
-        <ul>
-            {% for entry in group.islands %}
+        <ul class="mi-list">
+            {% for island in group.islands %}
                 <li>
-                    <a href="{% url 'island_detail' entry.island.id %}">
-                        {{ entry.island.name }}
+                    <a href="{% url 'island_detail' island.id %}">
+                        {{ island.name }}
                     </a>
 
-                    {% if entry.sub_islands %}
-                        <ul>
-                            {% for sub in entry.sub_islands %}
+                    {% if island.sub_islands %}
+                        <ul class="mi-list">
+                            {% for sub in island.sub_islands %}
                                 <li>
                                     <a href="{% url 'island_detail' sub.id %}">
                                         {{ sub.name }}
