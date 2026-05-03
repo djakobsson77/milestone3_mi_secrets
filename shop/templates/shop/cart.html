@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="cart-page">
+    <h1>Your Cart</h1>
+
+    {% if items %}
+    <table class="cart-table">
+        <tr>
+            <th>Game</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+
+        {% for item in items %}
+        <tr>
+            <td>{{ item.game.title }}</td>
+
+            <td>
+                <form action="{% url 'update_cart' item.id %}" method="POST">
+                    {% csrf_token %}
+                    <input type="number" name="quantity" value="{{ item.quantity }}" min="1">
+                    <button type="submit" class="btn-small">Update</button>
+                </form>
+            </td>
+
+            <td>{{ item.total_price }} €</td>
+
+            <td>
+                <a href="{% url 'remove_from_cart' item.id %}" class="btn-small danger">Remove</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h3>Total: {{ total }} €</h3>
+    
+        <a href="{% url 'checkout' %}" class="cart-btns">Checkout</a>
+        <br>
+
+        {% else %}
+        <p>Your cart is empty.</p>
+        {% endif %}
+        
+        <a href="{% url 'shop' %}" class="cart-btns">Continue Shopping</a>
+    
+
+    {% endblock %}

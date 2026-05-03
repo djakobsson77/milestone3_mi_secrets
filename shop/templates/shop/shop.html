@@ -1,20 +1,24 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block content %}
-<section class="container my-5 mi-text-700">
-    <h2 class="text-center mb-4">Monkey Island Shop</h2>
+<h1>Shop</h1>
+<div class="view-cart-wrapper">
+    <a href="{% url 'cart' %}" class="view-cart-btn">View Cart</a>
+</div>
 
-    <div class="row">
-        {% for game in games %}
-        <div class="col-md-4 text-center mb-4">
-            <img src="{{ game.image.url }}" class="img-fluid rounded shadow" alt="{{ game.title }}">
-            <h4 class="mt-2">{{ game.title }}</h4>
-            <p>{{ game.description }}</p>
-            <p class="fw-bold">{{ game.price }} €</p>
-            <button class="btn btn-warning">Buy</button>
+<div class="shop-container">
+    {% for game in games %}
+        <div class="game-card">
+            <img src="{{ game.image }}" alt="{{ game.title }}" class="game-image">
+
+            <h5>{{ game.title }}</h5>
+            <p class="game-description">{{ game.description }}</p>
+            <p><strong>{{ game.price }} €</strong></p>
+
+            <a href="{% url 'add_to_cart' game.id %}" class="btn">Add to cart</a>
         </div>
-        {% endfor %}
-    </div>
-</section>
+    {% endfor %}
+</div>
+
 {% endblock %}
