@@ -107,9 +107,9 @@ a {
 
 /* Home page */
 .home-hero-img {
-    width: 300px;        /* samma visuella storlek som innan */
-    height: auto;        /* korrekt proportion */
-    object-fit: contain; /* förhindrar stretching */
+    width: 300px;
+    height: auto;
+    object-fit: contain;
 }
 
 /* List pages */
