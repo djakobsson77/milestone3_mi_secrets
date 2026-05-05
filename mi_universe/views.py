@@ -3,6 +3,8 @@ from .models import Island, Character, PirateItem
 from django.core.mail import send_mail
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
+from .forms import ContactForm
+from django.conf import settings
 
 def island_list(request):
     islands = Island.objects.all().order_by("name")
@@ -129,23 +131,30 @@ def about(request):
 
 def contact(request):
     if request.method == "POST":
-        name = request.POST.get("name")
-        email = request.POST.get("email")
-        message = request.POST.get("message")
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data["name"]
+            email = form.cleaned_data["email"]
+            message = form.cleaned_data["message"]
 
-        full_message = f"From: {name}\nEmail: {email}\n\nMessage:\n{message}"
+            full_message = f"From: {name}\nEmail: {email}\n\nMessage:\n{message}"
 
-        send_mail(
-            subject="New contact form message",
-            message=full_message,
-            from_email="noreply@yourdomain.com",
-            recipient_list=["your_email@example.com"],
-        )
+            send_mail(
+                subject="New Contact Form Message",
+                message=full_message,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=["djakobsson77@gmail.com"],
+            )
 
-        messages.success(request, "Your message has been sent. Thank you!")
-        return redirect(request.META.get("HTTP_REFERER", "home"))
+            return redirect("contact_success")
+    else:
+        form = ContactForm()
 
-    return redirect("home")
+    return render(request, "contact.html", {"form": form})
+
+
+def contact_success(request):
+    return render(request, "mi_universe/contact_success.html")
 
 
 def signup(request):
