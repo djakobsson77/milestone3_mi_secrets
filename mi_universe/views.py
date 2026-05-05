@@ -3,7 +3,6 @@ from .models import Island, Character, PirateItem
 from django.core.mail import send_mail
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
-from .forms import ContactForm
 from django.conf import settings
 
 def island_list(request):
@@ -129,11 +128,6 @@ def about(request):
     return render(request, "mi_universe/about.html")
 
 
-from django.http import HttpResponse
-
-from django.shortcuts import render, redirect
-from django.core.mail import send_mail
-
 def contact(request):
     if request.method == "POST":
         name = request.POST.get("name")
@@ -148,6 +142,9 @@ def contact(request):
         )
 
         return redirect("contact_success")
+
+    return redirect("/")
+
 
 
 def signup(request):
