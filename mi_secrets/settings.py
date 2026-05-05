@@ -139,3 +139,13 @@ LOGOUT_REDIRECT_URL = "/"
 
 import dj_database_url
 DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
+# Production email settings (SendGrid)
+if not DEBUG:
+    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+    EMAIL_HOST = "smtp.sendgrid.net"
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_USER = "apikey"
+    EMAIL_HOST_PASSWORD = os.environ.get("SENDGRID_API_KEY")
+    DEFAULT_FROM_EMAIL = "noreply@mi-secrets.com"
