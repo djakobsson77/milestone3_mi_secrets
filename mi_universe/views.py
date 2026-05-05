@@ -131,6 +131,9 @@ def about(request):
 
 from django.http import HttpResponse
 
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail
+
 def contact(request):
     if request.method == "POST":
         name = request.POST.get("name")
@@ -140,22 +143,11 @@ def contact(request):
         send_mail(
             "New Contact Form Message",
             f"From: {name}\nEmail: {email}\n\nMessage:\n{message}",
-            None,  # Django använder DEFAULT_FROM_EMAIL
+            None,
             ["djakobsson77@gmail.com"],
         )
 
         return redirect("contact_success")
-
-        return redirect("/")
-
-    else:
-        form = ContactForm()
-
-    return render(request, "contact.html", {"form": form})
-
-
-def contact_success(request):
-    return render(request, "mi_universe/contact_success.html")
 
 
 def signup(request):
