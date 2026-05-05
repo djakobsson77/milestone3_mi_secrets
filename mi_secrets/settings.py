@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-91ncarjcw9_t&&zb4w*5lfmq^7zo&yp_%q+m#=+(6v!qh33#=5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
@@ -149,4 +149,4 @@ if not DEBUG:
     EMAIL_USE_TLS = True
     EMAIL_HOST_USER = "apikey"
     EMAIL_HOST_PASSWORD = os.environ.get("SENDGRID_API_KEY")
-    DEFAULT_FROM_EMAIL = "noreply@mi-secrets.com"
+    DEFAULT_FROM_EMAIL = "djakobsson77@gmail.com"
