@@ -143,7 +143,11 @@ import dj_database_url
 DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 # Production email settings (SendGrid)
-if not DEBUG:
+if DEBUG:
+    # Development
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+else:
+    # Production (SendGrid)
     EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
     EMAIL_HOST = "smtp.sendgrid.net"
     EMAIL_PORT = 587
