@@ -129,24 +129,26 @@ def about(request):
     return render(request, "mi_universe/about.html")
 
 
+from django.http import HttpResponse
+
 def contact(request):
     if request.method == "POST":
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            name = form.cleaned_data["name"]
-            email = form.cleaned_data["email"]
-            message = form.cleaned_data["message"]
-
-            full_message = f"From: {name}\nEmail: {email}\n\nMessage:\n{message}"
+        try:
+            name = request.POST.get("name")
+            email = request.POST.get("email")
+            message = request.POST.get("message")
 
             send_mail(
-                subject="New Contact Form Message",
-                message=full_message,
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=["djakobsson77@gmail.com"],
+                "New Contact Form Message",
+                f"From: {name}\nEmail: {email}\n\nMessage:\n{message}",
+                None,
+                ["djakobsson77@gmail.com"],
             )
 
             return redirect("contact_success")
+
+        except Exception as e:
+            return HttpResponse(f"ERROR: {e}", status=500)
     else:
         form = ContactForm()
 
