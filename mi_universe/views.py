@@ -145,6 +145,8 @@ def contact(request):
 
     return redirect("/")
 
+def contact_success(request):
+    return render(request, "mi_universe/contact_success.html")
 
 
 def signup(request):
