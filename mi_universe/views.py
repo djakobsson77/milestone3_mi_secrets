@@ -137,7 +137,7 @@ def contact(request):
         send_mail(
             "New Contact Form Message",
             f"From: {name}\nEmail: {email}\n\nMessage:\n{message}",
-            None,
+            settings.DEFAULT_FROM_EMAIL,
             ["djakobsson77@gmail.com"],
         )
 
