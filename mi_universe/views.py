@@ -133,22 +133,21 @@ from django.http import HttpResponse
 
 def contact(request):
     if request.method == "POST":
-        try:
-            name = request.POST.get("name")
-            email = request.POST.get("email")
-            message = request.POST.get("message")
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        message = request.POST.get("message")
 
-            send_mail(
-                "New Contact Form Message",
-                f"From: {name}\nEmail: {email}\n\nMessage:\n{message}",
-                None,
-                ["djakobsson77@gmail.com"],
-            )
+        send_mail(
+            "New Contact Form Message",
+            f"From: {name}\nEmail: {email}\n\nMessage:\n{message}",
+            None,  # Django använder DEFAULT_FROM_EMAIL
+            ["djakobsson77@gmail.com"],
+        )
 
-            return redirect("contact_success")
+        return redirect("contact_success")
 
-        except Exception as e:
-            return HttpResponse(f"ERROR: {e}", status=500)
+        return redirect("/")
+
     else:
         form = ContactForm()
 
