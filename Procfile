@@ -1,2 +1,2 @@
-web: python manage.py migrate && gunicorn mi_secrets.wsgi
-
+release: python manage.py migrate
+web: gunicorn mi_secrets.wsgi
