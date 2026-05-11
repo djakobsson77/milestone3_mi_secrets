@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mi_universe',
     'shop.apps.ShopConfig',
-    'django_extensions',
 ]
 
 MIDDLEWARE = [
