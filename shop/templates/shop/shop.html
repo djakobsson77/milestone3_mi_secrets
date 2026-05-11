@@ -10,7 +10,8 @@
 <div class="shop-container">
     {% for game in games %}
         <div class="game-card">
-            <img src="{{ game.image }}" alt="{{ game.title }}" class="game-image">
+            <img src="{% static 'mi_universe/images/' %}{{ game.image_file }}" 
+            alt="{{ game.title }}" class="game-image">
 
             <h5>{{ game.title }}</h5>
             <p class="game-description">{{ game.description }}</p>

@@ -1,3 +1,5 @@
+from urllib import request
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Game, CartItem
@@ -7,13 +9,19 @@ from .models import Game, CartItem
 @login_required
 def shop(request):
     games = Game.objects.all()
-    return render(request, "shop/shop.html", {"games": games})
+    cart_count = 0
+
+    if request.user.is_authenticated:
+        cart_count = CartItem.objects.filter(user=request.user).count()
+
+    return render(request, 'shop/shop.html', {
+        'games': games,
+        'cart_count': cart_count
+    })
 
 
 @login_required
 def add_to_cart(request, game_id):
-    print("USER:", request.user)
-    print("GAME ID:", game_id)
     game = get_object_or_404(Game, id=game_id)
     cart_item, created = CartItem.objects.get_or_create(
         user=request.user,
@@ -25,7 +33,7 @@ def add_to_cart(request, game_id):
         cart_item.quantity += 1
         cart_item.save()
 
-    return redirect('cart')
+    return redirect(request.META.get('HTTP_REFERER', 'shop'))
 
 
 @login_required

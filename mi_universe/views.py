@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.conf import settings
 
+
 def island_list(request):
     islands = Island.objects.all().order_by("name")
 
