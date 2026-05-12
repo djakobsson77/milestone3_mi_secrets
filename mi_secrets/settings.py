@@ -24,7 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-91ncarjcw9_t&&zb4w*5lfmq^7zo&yp_%q+m#=+(6v!qh33#=5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG") == "True"
+
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
@@ -146,11 +147,8 @@ if os.environ.get("DYNO"):
 
 
 # Production email settings (SendGrid)
-if DEBUG:
-    # Development
-    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-else:
-    # Production (SendGrid)
+if os.environ.get("DYNO"):
+    # Production (Heroku)
     EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
     EMAIL_HOST = "smtp.sendgrid.net"
     EMAIL_PORT = 587
@@ -158,3 +156,7 @@ else:
     EMAIL_HOST_USER = "apikey"
     EMAIL_HOST_PASSWORD = os.environ.get("SENDGRID_API_KEY")
     DEFAULT_FROM_EMAIL = "djakobsson77@gmail.com"
+else:
+    # Local development
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
