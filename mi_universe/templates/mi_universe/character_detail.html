@@ -21,12 +21,12 @@
 
             <p>
             Appears first time on:
-            <a href="{% url 'island_detail' character.island.pk %}">
+            <a href="{% url 'island_detail' character.island.pk %}" class="appearon-island">
             {{ character.island.name }}
             </a>
             </p>
 
-            <p><a href="{% url 'character_list' %}">Back to Characters</a></p>
+            <p><a href="{% url 'character_list' %}" class="back-link">Back to Characters</a></p>
         </div>
     </div>
 </section>

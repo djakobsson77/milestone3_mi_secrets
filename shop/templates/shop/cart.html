@@ -28,7 +28,7 @@
             <td>{{ item.total_price }} €</td>
 
             <td>
-                <a href="{% url 'remove_from_cart' item.id %}" class="btn-small danger">Remove</a>
+                <a href="{% url 'remove_from_cart' item.id %}" class="cart-remove">Remove</a>
             </td>
         </tr>
         {% endfor %}
@@ -36,14 +36,14 @@
 
     <h3>Total: {{ total }} €</h3>
     
-        <a href="{% url 'checkout' %}" class="cart-btns">Checkout</a>
+        <a href="{% url 'checkout' %}" class="action-btns">Checkout</a>
         <br>
 
         {% else %}
         <p>Your cart is empty.</p>
         {% endif %}
         
-        <a href="{% url 'shop' %}" class="cart-btns">Continue Shopping</a>
+        <a href="{% url 'shop' %}" class="action-btns">Continue Shopping</a>
 </div>
     
 

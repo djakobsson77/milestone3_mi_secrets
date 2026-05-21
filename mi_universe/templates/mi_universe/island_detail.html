@@ -11,13 +11,14 @@
             <p>{{ island.description|linebreaksbr }}</p>
 
             {% if island.image_file %}
-                <a href="{% static 'mi_universe/images/' %}{{ island.image_file }}" target="_blank">
+            <p class="img-note">Click on the image for bigger size</p>
+                <a href="{% static 'mi_universe/images/' %}{{ island.image_file }}" target="_blank">    
                 <img src="{% static 'mi_universe/images/' %}{{ island.image_file }}"
                     alt="{{ island.name }}"
                     style="width: 200px; height: auto; cursor: pointer;">
                 </a>
             {% endif %}
-            <p><a href="{% url 'island_list' %}">Back to Islands</a></p>
+            <p><a href="{% url 'island_list' %}" class="back-link">Back to Islands</a></p>
         </div>
     </div>
 </section>

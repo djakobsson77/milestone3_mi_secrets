@@ -4,7 +4,7 @@
 {% block content %}
 <h1>Shop</h1>
 <div class="view-cart-wrapper">
-    <a href="{% url 'cart' %}" class="view-cart-btn">View Cart</a>
+    <a href="{% url 'cart' %}" class="action-btns">View Cart</a>
 </div>
 
 <div class="shop-container">
@@ -17,7 +17,7 @@
             <p class="game-description">{{ game.description }}</p>
             <p><strong>{{ game.price }} €</strong></p>
 
-            <a href="{% url 'add_to_cart' game.id %}" class="btn">Add to cart</a>
+            <a href="{% url 'add_to_cart' game.id %}" class="shop-btns">Add to cart</a>
         </div>
     {% endfor %}
 </div>
