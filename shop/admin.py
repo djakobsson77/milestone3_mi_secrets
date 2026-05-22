@@ -3,7 +3,7 @@ from .models import Game, CartItem
 
 @admin.register(Game)
 class GameAdmin(admin.ModelAdmin):
-    list_display = ("title", "formatted_price")
+    list_display = ("title", "price", "formatted_price")
     search_fields = ("title",)
     ordering = ("title",)
     list_editable = ("price",)
