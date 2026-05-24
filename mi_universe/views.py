@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Island, Character, PirateItem
 from django.core.mail import send_mail
-from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.conf import settings
 
@@ -12,10 +11,9 @@ def island_list(request):
     def get_island(name):
         return next((i for i in islands if i.name == name), None)
 
-
     categories = {
         "The Secret of Monkey Island": [
-            {"name": "Mêlée Island"}, 
+            {"name": "Mêlée Island"},
             {"name": "Monkey Island"}
         ],
         "Monkey Island 2 – LeChuck's Revenge": [
@@ -34,7 +32,8 @@ def island_list(request):
             {"name": "Lucre Island"}
         ],
         "Tales of Monkey Island": [
-            {"name": "Gulf of Melange",
+            {
+                "name": "Gulf of Melange",
                 "sub_islands": [
                     "Boulder Beach",
                     "Brillig Island",
@@ -87,12 +86,16 @@ def island_list(request):
 
 def island_detail(request, pk):
     island = get_object_or_404(Island, pk=pk)
-    return render(request, "mi_universe/island_detail.html", {"island": island})
+    return render(
+        request, "mi_universe/island_detail.html", {"island": island}
+        )
 
 
 def character_list(request):
     characters = Character.objects.all()
-    return render(request, "mi_universe/character_list.html", {"characters": characters})
+    return render(
+        request, "mi_universe/character_list.html", {"characters": characters}
+        )
 
 
 def character_detail(request, pk):
@@ -113,12 +116,16 @@ def character_detail(request, pk):
 
 def pirateitem_list(request):
     items = PirateItem.objects.all()
-    return render(request, "mi_universe/pirateitem_list.html", {"items": items})
+    return render(
+        request, "mi_universe/pirateitem_list.html", {"items": items}
+        )
 
 
 def pirateitem_detail(request, pk):
     item = get_object_or_404(PirateItem, pk=pk)
-    return render(request, "mi_universe/pirateitem_detail.html", {"item": item})
+    return render(
+        request, "mi_universe/pirateitem_detail.html", {"item": item}
+        )
 
 
 def home(request):
@@ -145,6 +152,7 @@ def contact(request):
         return redirect("contact_success")
 
     return redirect("/")
+
 
 def contact_success(request):
     return render(request, "mi_universe/contact_success.html")

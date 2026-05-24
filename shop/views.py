@@ -6,6 +6,7 @@ from .models import Game, CartItem
 
 # Create your views here.
 
+
 @login_required
 def shop(request):
     games = Game.objects.all()
