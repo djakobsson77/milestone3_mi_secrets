@@ -84,19 +84,22 @@
         </nav>
     </header>
 
-    <main class="flex-grow-1">
-        {% if messages %}
-        <div class="container mt-3">
-            {% for message in messages %}
-            <div class="alert alert-success text-center">
-                {{ message }}
-            </div>
-            {% endfor %}
+    {% if messages %}
+    <section id="alerts" class="container mt-3">
+        {% for msg in messages %}
+        <div class="mi-alert">
+            {{ msg }}
         </div>
-        {% endif %}
+        {% endfor %}
+    </section>
+    {% endif %}
+
+
+    <main>
 
         {% block content %}
         {% endblock %}
+
     </main>
 
     <footer class="mi-footer mt-auto">
@@ -134,7 +137,17 @@
     </footer>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Auto-fade alerts -->
+    <script>
+        setTimeout(() => {
+            document.querySelectorAll('.mi-alert').forEach(el => {
+                el.style.transition = "opacity 0.5s ease";
+                el.style.opacity = "0";
+                setTimeout(() => el.remove(), 500);
+            });
+        }, 3000);
     </script>
 
 </body>

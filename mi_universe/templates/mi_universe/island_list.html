@@ -11,27 +11,15 @@
         can click on the island name to see more details about it.
     </p>
 
-    {% for group in grouped_islands %}
-        <h5>{{ group.game }}</h5>
+    {% for game, islands in grouped_islands %}
+        <h5>{{ game }}</h5>
 
         <ul class="mi-list">
-            {% for island in group.islands %}
+            {% for island in islands %}
                 <li>
                     <a href="{% url 'island_detail' island.id %}">
                         {{ island.name }}
                     </a>
-
-                    {% if island.sub_islands %}
-                        <ul class="mi-list">
-                            {% for sub in island.sub_islands %}
-                                <li>
-                                    <a href="{% url 'island_detail' sub.id %}">
-                                        {{ sub.name }}
-                                    </a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
                 </li>
             {% endfor %}
         </ul>

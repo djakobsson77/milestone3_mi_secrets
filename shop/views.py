@@ -1,5 +1,5 @@
 from urllib import request
-
+from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Game, CartItem
@@ -33,7 +33,15 @@ def add_to_cart(request, game_id):
     if not created:
         cart_item.quantity += 1
         cart_item.save()
-
+        messages.success(
+            request,
+            f'{game.title} quantity updated in your cart.'
+        )
+    else:
+        messages.success(
+            request,
+            f'{game.title} added to your cart.'
+        )
     return redirect(request.META.get('HTTP_REFERER', 'shop'))
 
 
@@ -58,8 +66,16 @@ def update_cart(request, item_id):
         if new_quantity > 0:
             item.quantity = new_quantity
             item.save()
+            messages.success(
+                request,
+                f'{item.game.title} quantity updated.'
+            )
         else:
             item.delete()
+            messages.success(
+                request,
+                f'{item.game.title} removed from your cart.'
+            )
 
     return redirect('cart')
 
@@ -67,12 +83,16 @@ def update_cart(request, item_id):
 @login_required
 def remove_from_cart(request, item_id):
     item = get_object_or_404(CartItem, id=item_id, user=request.user)
+    game_title = item.game.title
     item.delete()
+    messages.success(
+        request,
+        f'{game_title} removed from your cart.'
+    )
     return redirect('cart')
 
 
 @login_required
 def checkout(request):
-    # Mock-checkout: töm kundvagnen och visa tack-sida
     CartItem.objects.filter(user=request.user).delete()
     return render(request, 'shop/checkout.html')
