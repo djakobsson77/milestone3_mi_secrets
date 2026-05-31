@@ -19,10 +19,6 @@ h1, h2, h3, h4, h5, h6 {
     color: #ffc107 !important;
 }
 
-a {
-    text-decoration: none;
-}
-
 /* Navbar */
 .mi-navbar {
     background-color: #001f3f;
@@ -123,7 +119,7 @@ a {
     cursor: pointer;
     width: 100px;
     font-size: 0.9rem;
-    display: inline;
+    display: block;
     padding: 0.2rem 0;
     transition: 0.15s ease-in-out;
 }
@@ -267,6 +263,15 @@ a {
 
 
 /* Alert messages */
+#alerts {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    z-index: 9999;
+}
+
 .mi-alert {
     background-color: #d3d3d3;
     color: #000000;
@@ -300,8 +305,11 @@ a {
     cursor: pointer;
     width: 100%;
     font-size: 0.9rem;
-    display: inline;
-    padding: 0.2rem 0;
+    display: inline-block;
+    text-decoration: none;
+    border: none;
+    box-sizing: border-box;
+    padding: 0.4rem 0;
     transition: 0.15s ease-in-out;
 }
 
