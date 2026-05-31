@@ -15,6 +15,10 @@ h1, h2, h3, h4, h5, h6 {
     color: #ffc107;
 }
 
+a {
+    text-decoration: none;
+}
+
 .text-mi-yellow {
     color: #ffc107 !important;
 }
@@ -265,7 +269,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Alert messages */
 #alerts {
     position: fixed;
-    top: 20px;
+    top: 70px;
     left: 50%;
     transform: translateX(-50%);
     width: auto;
@@ -306,7 +310,6 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     font-size: 0.9rem;
     display: inline-block;
-    text-decoration: none;
     border: none;
     box-sizing: border-box;
     padding: 0.4rem 0;
